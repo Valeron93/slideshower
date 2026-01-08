@@ -11,7 +11,7 @@ tmp_dir = "tmp"
   delay = 50
   entrypoint = ["./tmp/main"]
   exclude_dir = ["assets", "tmp", "vendor", "testdata"]
-  include_dir = ["cmd", "html"]
+  include_dir = ["cmd"]
   include_ext = ["go", "html", "css", "js"]
   exclude_regex= []
 
@@ -20,8 +20,3 @@ tmp_dir = "tmp"
 
 [misc]
   clean_on_exit = false
-
-[proxy]
-  enabled = true
-  proxy_port = 3001
-  app_port = 3000

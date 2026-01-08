@@ -1,22 +1,20 @@
 package main
 
 import (
-	"log"
+	"fmt"
 	"log/slog"
 	"net/http"
 
-	"github.com/Valeron93/slideshower/html"
+	"github.com/Valeron93/slideshower/frontend"
 )
 
 func main() {
 
-	http.HandleFunc("GET /{$}", func(w http.ResponseWriter, r *http.Request) {
-		if err := html.Templates.ExecuteTemplate(w, "index.html", nil); err != nil {
-			log.Print(err)
-		}
-	})
+	http.Handle("/", frontend.Handler)
 
-	http.Handle("/static/", html.StaticHandler)
+	http.HandleFunc("GET /health", func(w http.ResponseWriter, r *http.Request) {
+		fmt.Fprint(w, "OK")
+	})
 
 	const addr = ":3000"
 	slog.Info("listening", "addr", addr)
