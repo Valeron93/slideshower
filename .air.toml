@@ -1,0 +1,27 @@
+#:schema https://json.schemastore.org/any.json
+
+root = "."
+testdata_dir = "testdata"
+tmp_dir = "tmp"
+
+[build]
+  args_bin = []
+  bin = "./tmp/main"
+  cmd = "go build -o ./tmp/main ./cmd/slideshower"
+  delay = 50
+  entrypoint = ["./tmp/todo"]
+  exclude_dir = ["assets", "tmp", "vendor", "testdata"]
+  include_dir = ["cmd", "html"]
+  include_ext = ["go", "html", "css", "js"]
+  exclude_regex= []
+
+[log]
+  main_only = true
+
+[misc]
+  clean_on_exit = false
+
+[proxy]
+  enabled = true
+  proxy_port = 3001
+  app_port = 3000
